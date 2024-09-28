@@ -1,0 +1,45 @@
+import java.util.*;
+class Student{
+     int sum=0;
+     void GradeAverage(int array[],int n){
+    	
+    	 for(int a=0;a<=n;a++) {
+    	 sum=array[a]+array[a+1];
+	}
+    	 System.out.println("Total Marks Obtained:"+sum);
+    	 int Average=sum/n;
+    	 System.out.println("Average="+Average);
+    	 
+     }
+     void GradeCalculator(int array[],int n) {
+    	 if(sum>=90) {
+    		 System.out.println("The Grade Obtained: O");
+    	 }
+    	 else if(sum>=80 && sum<90) {
+    		 System.out.println("The Grade Obtained: A+");
+    	 }else if(sum>=70 && sum<80) {
+    		 System.out.println("The Grade Obtained: A");
+    	 }else if(sum>=60 && sum<70) {
+    		 System.out.println("The Grade Obtained: B+");
+    	 }else if(sum>=50 && sum<60) {
+    		 System.out.println("The Grade Obtained: B");
+    	 }else {
+    		 System.out.println("Fail");
+    	 }
+     }
+
+
+	public static void main(String[] args) {
+	    Student s=new Student();
+	Scanner	sc = new Scanner(System.in);
+	int n=sc.nextInt();
+	int[] array = new int[50];  
+	System.out.println("Enter the Subjects marks:"); 
+	for(int i=0; i<n; i++)  
+	{  
+	array[i]=sc.nextInt();  
+	}  
+	s.GradeAverage(array,n);
+	s.GradeCalculator(array,n);
+	}
+}
