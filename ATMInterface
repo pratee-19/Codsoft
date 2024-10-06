@@ -1,0 +1,101 @@
+package codsoft;
+interface Atmmachine {
+ int withdraw(int amount,int totalamount);
+ int deposit(int amount,int totalamount);
+ int checkbalance(int totalamount);
+}
+
+package codsoft;
+public class Bank implements Atmmachine {
+	@Override
+public int withdraw(int amount,int totalamount) {
+		if(totalamount>=amount) {
+			System.out.println("Your amount is withdrawed successfully.");
+			int finalamount=totalamount-amount;
+			return finalamount;
+		}else {
+			System.out.println("insufficient balance!"+"couldnot withdraw requested amount.");
+			return 0;
+		}
+	}
+
+	@Override
+	public int deposit(int amount,int totalamount) {
+		int finalamount=totalamount+amount;
+		System.out.println("Your amount is deposited successfully.");
+		return finalamount;
+	}
+	@Override
+	public int checkbalance(int finalamount) {
+	System.out.println("Your account balance is:"+finalamount);
+	return finalamount;
+		
+	}
+	}
+package codsoft;
+import java.util.*;
+public class Bankaccount {
+	void bank(int amount) {
+	Bank b=new Bank();	
+	Scanner sc=new Scanner(System.in);
+	int addamount,noww;
+	
+	System.out.println("Do you want to(1.Withdraw 2.Deposit 3.CheckBalance 4.exit):");
+	int n=sc.nextInt();
+	if(n==1) {
+		System.out.println("Enter the amount:");
+		addamount=sc.nextInt();
+		noww=b.withdraw(addamount,amount);
+		bank(noww);
+		}else if(n==2) {
+		System.out.println("Enter the amount:");
+		addamount=sc.nextInt();
+		noww=b.deposit(addamount,amount);
+		bank(noww);
+	}else if(n==3) {
+		noww=b.checkbalance(amount);
+		bank(noww);
+	}else {
+		System.out.println("exit");
+	}
+
+
+}
+}
+//main
+package codsoft;
+
+import java.util.Scanner;
+
+public class Main {
+		public static void main(String[] args) {
+		Scanner scanner =new Scanner(System.in);
+		Bank b=new Bank();
+		Bankaccount ba=new Bankaccount();
+		int amount;
+		int initialamount=1000,finalamount;
+		System.out.println("Welcome!");
+		System.out.println("Do you want to(1.Withdraw 2.Deposit 3.CheckBalance 4.exit):");
+		int n=scanner.nextInt();
+		
+		if(n==1) {
+			System.out.println("Enter the amount:");
+			amount=scanner.nextInt();
+			finalamount=b.withdraw(amount,initialamount);
+			ba.bank(finalamount);
+			}else if(n==2) {
+			System.out.println("Enter the amount:");
+			amount=scanner.nextInt();
+			finalamount=b.deposit(amount,initialamount);
+			ba.bank(finalamount);
+		}else if(n==3) {
+			finalamount=b.checkbalance(initialamount);
+			ba.bank(finalamount);
+		}else {
+			System.out.println("exit");
+		}
+	
+
+	}
+
+}
